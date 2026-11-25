@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Library — Novel, Google Books, Upload Karya & Chat Teman</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="sakuraBg" class="sakura-bg"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="brand">
+            <i class="fa-solid fa-book-open-reader"></i>
+            <span>Social<strong>Library</strong></span>
+        </div>
+
+        <ul class="nav-menu">
+            <li><button class="nav-btn active" data-section="novels"><i class="fa-solid fa-book"></i> Novel & Karya</button></li>
+            <li><button class="nav-btn" data-section="google-books"><i class="fa-brands fa-google"></i> Bacaan Google</button></li>
+            <li><button class="nav-btn" data-section="upload"><i class="fa-solid fa-feather"></i> Upload Karya</button></li>
+            <li><button class="nav-btn" data-section="chat"><i class="fa-solid fa-comments"></i> Chat Teman</button></li>
+        </ul>
+
+        <div id="authArea">
+            <button class="btn-gradient" id="btnOpenLogin"><i class="fa-solid fa-user"></i> Login</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-text">
+            <span class="pill-badge">✨ Tema Hijau & Ungu • Anime Literasi</span>
+            <h1>Baca Novel, Cari Buku Google, Upload Karya & <span class="grad-text">Chat Teman</span></h1>
+            <p>Semua fitur berjalan lancar di browser tanpa setup rumit. Buka novel favoritmu, telusuri bacaan dari Google, terbitkan tulisanmu, dan ngobrol bareng teman.</p>
+        </div>
+        <div class="mascot-box">
+            <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Aoi&backgroundColor=c0aede,b6e3f4" alt="Maskot Anime">
+            <p id="mascotQuote">"Konnichiwa! Pilih novel di bawah atau cari bacaan dari Google ya~"</p>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- 1. KOLEKSI NOVEL & KARYA KOMUNITAS -->
+        <section id="sec-novels" class="section active">
+            <div class="section-top">
+                <h2><i class="fa-solid fa-book-bookmark"></i> Rak Novel & Karya</h2>
+                <div class="filter-group">
+                    <button class="chip active" data-filter="all">Semua</button>
+                    <button
