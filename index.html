@@ -3,51 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Library — Novel, Google Books, Upload Karya & Chat Teman</title>
+    <title>Social Library — Anime Literasi, Novel & Komunitas</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Efek Cahaya Aura & Kelopak Sakura -->
+    <div class="ambient-glow glow-purple"></div>
+    <div class="ambient-glow glow-green"></div>
     <div id="sakuraBg" class="sakura-bg"></div>
 
     <!-- Navbar -->
     <nav class="navbar">
         <div class="brand">
-            <i class="fa-solid fa-book-open-reader"></i>
-            <span>Social<strong>Library</strong></span>
+            <div class="brand-icon">
+                <i class="fa-solid fa-wand-sparkles"></i>
+            </div>
+            <div>
+                <span class="brand-name">Social<strong>Library</strong></span>
+                <small class="brand-sub">ANIME READING & CHAT</small>
+            </div>
         </div>
 
         <ul class="nav-menu">
-            <li><button class="nav-btn active" data-section="novels"><i class="fa-solid fa-book"></i> Novel & Karya</button></li>
+            <li><button class="nav-btn active" data-section="novels"><i class="fa-solid fa-book-open"></i> Novel & Karya</button></li>
             <li><button class="nav-btn" data-section="google-books"><i class="fa-brands fa-google"></i> Bacaan Google</button></li>
-            <li><button class="nav-btn" data-section="upload"><i class="fa-solid fa-feather"></i> Upload Karya</button></li>
+            <li><button class="nav-btn" data-section="upload"><i class="fa-solid fa-feather-pointed"></i> Upload Karya</button></li>
             <li><button class="nav-btn" data-section="chat"><i class="fa-solid fa-comments"></i> Chat Teman</button></li>
         </ul>
 
         <div id="authArea">
-            <button class="btn-gradient" id="btnOpenLogin"><i class="fa-solid fa-user"></i> Login</button>
+            <button class="btn-gradient" id="btnOpenLogin"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <header class="hero">
-        <div class="hero-text">
-            <span class="pill-badge">✨ Tema Hijau & Ungu • Anime Literasi</span>
-            <h1>Baca Novel, Cari Buku Google, Upload Karya & <span class="grad-text">Chat Teman</span></h1>
-            <p>Semua fitur berjalan lancar di browser tanpa setup rumit. Buka novel favoritmu, telusuri bacaan dari Google, terbitkan tulisanmu, dan ngobrol bareng teman.</p>
+        <div class="hero-card">
+            <div class="pill-badge">
+                <i class="fa-solid fa-sparkles"></i> Emerald & Violet Anime Sanctuary
+            </div>
+            <h1>Ruang Baca Novel, Buku Google & <span class="grad-text">Obrolan Seru</span></h1>
+            <p>Nikmati suasana baca penuh warna ala *light novel* Jepang. Buka cerita seru, jelajahi ribuan buku dari Google, bagikan karyamu, dan ngobrol hangat bareng teman.</p>
+            <div class="hero-stats">
+                <div class="stat-pill"><i class="fa-solid fa-book"></i> Novel & Cerpen</div>
+                <div class="stat-pill"><i class="fa-brands fa-google"></i> Google Books Live</div>
+                <div class="stat-pill"><i class="fa-solid fa-heart"></i> Komunitas Anime</div>
+            </div>
         </div>
+
         <div class="mascot-box">
-            <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Aoi&backgroundColor=c0aede,b6e3f4" alt="Maskot Anime">
-            <p id="mascotQuote">"Konnichiwa! Pilih novel di bawah atau cari bacaan dari Google ya~"</p>
+            <div class="mascot-ring">
+                <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Aoi&backgroundColor=c0aede,b6e3f4" alt="Maskot Anime">
+            </div>
+            <span class="mascot-tag">Pustakawati Aoi</span>
+            <p id="mascotQuote">"Konnichiwa! Pilih novel favoritmu atau cari bacaan dari Google ya~"</p>
         </div>
     </header>
 
     <main class="main-container">
-        <!-- 1. KOLEKSI NOVEL & KARYA KOMUNITAS -->
+        <!-- 1. KOLEKSI NOVEL & KARYA -->
         <section id="sec-novels" class="section active">
             <div class="section-top">
-                <h2><i class="fa-solid fa-book-bookmark"></i> Rak Novel & Karya</h2>
+                <div>
+                    <h2><i class="fa-solid fa-layer-group"></i> Rak Novel & Karya</h2>
+                    <p class="sub-heading">Klik kartu bacaan untuk membuka halaman cerita secara penuh</p>
+                </div>
                 <div class="filter-group">
                     <button class="chip active" data-filter="all">Semua</button>
-                    <button
+                    <button class="chip" data-filter="Novel">Novel</button>
+                    <button class="chip" data-filter="Cerpen">Cerpen</button>
+                    <button class="chip" data-filter="Komik">Komik</button>
+                </div>
+            </div>
+            <div class="search-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="localSearch" class="search-input" placeholder="Cari judul novel, komik, cerpen, atau nama penulis...">
+            </div>
+            <div id="novelGrid" class="grid-cards"></div>
+        </section>
+
+        <!-- 2. BACAAN DARI GOOGLE -->
+        <section id="sec-google-books" class="section">
+            <div class="section-top">
+                <div>
+                    <h2><i class="fa-brands fa-google"></i> Bacaan dari Google Books</h2>
+                    <p class="sub-heading">Cari buku, novel, atau referensi bacaan langsung dari Google</p>
+                </div>
+            </div>
+            <form id="googleSearchForm" class="google-search-box">
+                <div class="search-wrap" style="flex:1; margin-bottom:0;">
+                    <i class="fa-solid fa-book-atlas"></i>
+                    <input type="text" id="googleQuery" class="search-input" placeholder="Ketik topik bacaan, misal: fantasi, petualangan, sains..." value="novel indonesia" required>
+                </div>
+                <button type="submit" class="btn-gradient"><i class="fa-solid fa-magnifying-glass"></i> Cari Buku</button>
+            </form>
+            <div id="googleStatus" class="status-msg"></div>
+            <div id="googleGrid" class="grid-cards"></div>
+        </section>
+
+        <!-- 3. UPLOAD KARYA -->
+        <section id="sec-upload" class="section">
+            <div class="panel-card form-panel">
+                <div class="panel-header-accent">
+                    <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Publikasikan Karya Baru</h2>
+                    <p class="helper-text">Tulisanmu akan langsung tampil cantik di tab <strong>Novel & Karya</strong> dan bisa dibaca kapan saja.</p>
+                </div>
+                <form id="uploadForm">
+                    <div class="form-group">
+                        <label>Judul Karya</label>
+                        <input type="text" id="upTitle" placeholder="Contoh: Langit Senja di Kota Ungu" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Jenis Karya</label>
+                            <select id="upType">
+                                <option value="Novel">Novel</option>
+                                <option value="Cerpen">Cerpen</option>
+                                <option value="Komik">Komik</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nama Penulis</label>
+                            <input type="text" id="upAuthor" placeholder="Nama penulis" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>URL Gambar Sampul (Opsional)</label>
+                        <input type="url" id="upCover" placeholder="https://... (kosongkan untuk sampul estetik otomatis)">
+                    </div>
+                    <div class="form-group">
+                        <label>Isi Cerita / Bab Novel</label>
+                        <textarea id="upContent" rows="7" placeholder="Tuliskan kisah terbaikmu di sini..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-gradient full-btn"><i class="fa-solid fa-paper-plane"></i> Terbitkan ke Rak Bacaan</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 4. CHAT TEMAN -->
+        <section id="sec-chat" class="section">
+            <div class="chat-layout">
+                <aside class="chat-sidebar">
+                    <div>
+                        <h3><i class="fa-solid fa-hashtag"></i> Ruang Obrolan</h3>
+                        <ul id="roomList">
+                            <li class="active" data-room="teman"># teman-nongkrong</li>
+                            <li data-room="novel"># diskusi-novel</li>
+                            <li data-room="anime"># anime-wibu-club</li>
+                        </ul>
+                    </div>
+                    <div class="friend-list">
+                        <h4>Teman Sedang Aktif</h4>
+                        <div class="friend-item"><span class="online-dot"></span> Ren_Kun</div>
+                        <div class="friend-item"><span class="online-dot"></span> Hana_Novel</div>
+                        <div class="friend-item"><span class="online-dot"></span> Sora_Chan</div>
+                    </div>
+                </aside>
+
+                <div class="chat-box">
+                    <div class="chat-header">
+                        <strong id="activeRoomTitle"># teman-nongkrong</strong>
+                        <span id="chatUserIndicator" class="muted-small">Belum login (otomatis buka login saat kirim)</span>
+                    </div>
+                    <div id="chatMessages" class="chat-messages"></div>
+                    <form id="chatForm" class="chat-form">
+                        <input type="text" id="chatText" placeholder="Kirim pesan seru ke temanmu..." required>
+                        <button type="submit" class="btn-gradient"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL LOGIN -->
+    <div id="loginModal" class="modal">
+        <div class="modal-box">
+            <button class="modal-close" id="closeLoginModal">&times;</button>
+            <div class="modal-center">
+                <div class="mascot-ring" style="width:84px; height:84px; margin:0 auto 0.6rem;">
+                    <img id="previewAvatar" src="https://api.dicebear.com/9.x/adventurer/svg?seed=Ren&backgroundColor=c0aede" alt="Avatar">
+                </div>
+                <h2>Masuk ke Social Library</h2>
+                <p class="helper-text">Pilih avatar anime dan nama panggilanmu</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Nama / Username</label>
+                    <input type="text" id="loginName" placeholder="Contoh: Akira_Reader" required>
+                </div>
+                <div class="form-group">
+                    <label>Avatar Karakter Anime</label>
+                    <select id="loginAvatar" onchange="updateAvatarPreview()">
+                        <option value="Ren">Ren (Petualang)</option>
+                        <option value="Aoi">Aoi (Pustakawati)</option>
+                        <option value="Hana">Hana (Penulis)</option>
+                        <option value="Sora">Sora (Pembaca)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-gradient full-btn"><i class="fa-solid fa-sparkles"></i> Masuk Sekarang</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL BACA NOVEL / KARYA -->
+    <div id="readerModal" class="modal">
+        <div class="modal-box reader-box">
+            <button class="modal-close" id="closeReaderModal">&times;</button>
+            <div id="readerContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
